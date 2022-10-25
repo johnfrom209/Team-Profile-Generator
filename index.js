@@ -1,3 +1,5 @@
+const fs = require('fs');
+const inquirer = require('inquirer');
 
 let managerQuestions = [
     {
@@ -15,7 +17,6 @@ let managerQuestions = [
 ];
 // seems kinda dry in here
 let engineerQuestions = [
-
     {
         name: 'Name',
         message: 'What is the engineer\s name?'
@@ -44,3 +45,9 @@ let internQuestions = [
         message: 'What school are they attending?'
     }
 ]
+
+inquirer
+    .prompt(managerQuestions)
+    .then((answers) => {
+        console.log("We got prompt");
+    })
