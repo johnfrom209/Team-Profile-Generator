@@ -12,5 +12,4 @@ describe("Manager", () => {
             expect(employee1.getRole()).toEqual("Manager")
         })
     })
-
 })
