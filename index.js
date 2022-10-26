@@ -56,37 +56,26 @@ function addEmployee() {
     inquirer
         .prompt(employeeQuestions)
         .then(answers => {
-            console.log(answers);
             setAnswers = answers;
             if (answers.employeeType === 'Manager') {
-                // create manager
                 const temp1 = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
-                console.log("constructor" + temp1);
-                console.log("Before: " + company);
                 company.push(temp1)
-                console.log("After " + company);
-                // call function that writes to page?
-                console.log("company Man " + company);
                 addEmployee();
             }
             else if (answers.employeeType === 'Engineer') {
                 const temp2 = new Engineer(answers.name, answers.id, answers.email, answers.github)
                 company.push(temp2)
-                console.log("company Engi " + company);
                 addEmployee();
             }
             else if (answers.employeeType === 'Intern') {
                 const temp3 = new Intern(answers.name, answers.id, answers.email, answers.school)
                 company.push(temp3)
-                console.log("company999 Intern" + company);
                 addEmployee();
 
             }
             else {
                 // send company to create html page
-                console.log("company1323" + company);
                 writetoFile("index.html", generateEmployeeCard(company));
-                console.log("company" + company);
             }
         })
 }
@@ -104,55 +93,10 @@ function writetoFile(name, array) {
         err ? console.log(err) : console.log('Successfully created GENERATED-README.me!'))
 }
 
-
-function employeeCard(data) {
-
-    data.forEach(function (employee) {
-        // I hate doing this its so dry but time is ticking
-        if (employee.getRole() === "Manager") {
-            return `
-            <div class="card col-2 p-0">
-                <h5 class="card-header heading">${employee.name}</h5>
-                <div class="card-body ">
-                    <h6 class="card-title">ID: ${employee.id}</h6>
-                    <h6 class="card-title">Email: < href = mailto:${employee.email}">${employee.email}</></h6 >
-                    <h6 class="card-title">Office number:${employee.officeNumber}</h6>
-                </div >
-            </div >
-    `
-        }
-        else if (employee.getRole() === "Engineer") {
-            return `
-             <div class="card col-2 p-0">
-                <h5 class="card-header heading">${employee.name}</h5>
-                <div class="card-body ">
-                    <h6 class="card-title">ID: ${employee.id}</h6>
-                    <h6 class="card-title">Email: < href = mailto:${employee.email}">${employee.email}</></h6 >
-                    <h6 class="card-title">github:<a href ="https://github.com/ /${employee.github}"target="_blank"></h6>
-                </div >
-            </div >
-    `
-        }
-        else {
-            return `
-            <div class="card col-2 p-0">
-                <h5 class="card-header heading">${employee.name}</h5>
-                <div class="card-body ">
-                    <h6 class="card-title">ID: ${employee.id}</h6>
-                    <h6 class="card-title">Email: < href = mailto:${employee.email}">${employee.email}</></h6 >
-                    <h6 class="card-title">School: ${employee.school}</h6>
-                </div >
-            </div >
-    `
-
-        }
-    })
-}
-
 let results;
 
 function generateEmployeeCard(data) {
-    console.log(data + "look at me");
+
     results = `
     <!DOCTYPE html>
 <html lang="en">
