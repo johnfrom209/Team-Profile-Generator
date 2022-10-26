@@ -44,7 +44,7 @@ Install npm via "npm init". Then you will need to install inquirer by using "npm
 
 [Github Repo](https://github.com/johnfrom209/Team-Profile-Generator)
 
-[Youtube Video]()
+[Youtube Video](https://youtu.be/f5FA2i7P7bw)
 
 ## Usage
 
